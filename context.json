@@ -1,0 +1,132 @@
+{
+    "chatbot_responses": [
+      {
+        "category": "Greetings",
+        "user_input": ["Hi", "Hello", "Hey", "Good morning", "Good afternoon", "Good evening"],
+        "response": ["Hello! Welcome to [Gitam University]. I'm here to help with your queries as a first-year student. How can I assist you today?"]
+      },
+      {
+        "category": "Syallabus",
+        "user_input": ["What is the syllabus for my course?"],
+        "response":  ["You can find your course syllabus and timetable on the college portal under the Academics section."]
+      },
+      {
+        "category": "Timetable",
+        "user_input": ["Where can I find my timetable?"],
+        "response":  ["Time Table can be seen under the course registration section"]
+      },
+      {
+        "category": "Subjects",
+        "user_input":["What subjects will I study?"],
+        "response":  ["You will study the subjects related to your domain depending upon the semesters"]
+      },
+        {
+        "category": "Mentor",
+        "user_input": [ "Who is my mentor?"],
+        "response": ["If you're unsure who  your mentor is, please check the G-Learn 'Mentor' section on the portal or contact the department office."]
+      },
+        {
+        "category": "Library",
+        "user_input": ["Where is the library?","Can you tell me the location of library?","Where is library located?"],
+        "response": ["The library is located in Building A on the second floor, open from 8 AM to 8 PM."]
+        },
+        {
+        "category": "Gym",
+        "user_input": [ "How can I access the gym?","Where is gym?"],
+        "response": [" The gym requires a membership, which you can get at the Student Center.","Gym is located in boys hostel C block"]
+        },
+        {
+        "category": "Cafeteria",
+        "user_input":["Where is the cafeteria?"],
+        "response":["Cafeterias are available in Buildings B and C."]
+      },
+      {
+        "category": "Study Rooms",
+        "user_input": [  "Are there study rooms available?"],
+        "response": ["For study rooms, you can book them online via the campus app."]
+      },
+      {
+        "category": "Programming Languages",
+        "user_input": ["What programming languages will I learn?"],
+        "response": ["For your domain, you'll primarily learn Python and Java in the first semester."]
+      },
+      {
+        "category": "Professors",
+        "user_input": ["Who are the professors for my department?"],
+        "response": ["The professors list are available under the course registrataion section and also on academic page on GITAM website"]
+      },
+      {
+        "category": "Lab",
+        "user_input": ["Is there a lab for my domain?"],
+        "response": [" Labs for practical sessions are held in Room 201."]
+      },
+      {
+        "category": "Project Related Guidance",
+        "user_input": ["Can I get domain related project guidance?"],
+        "response": ["For project guidance, you can consult with your professors during their office hours or join department-specific clubs for mentorship."]
+      },
+      {
+        "category": "Clubs",
+        "user_input": ["What clubs can I join?", "Is there a music club?"],
+        "response": ["Our college offers clubs for music, dance, drama, coding, robotics, and more."]
+      },
+      {
+        "category": "Sports Facilities",
+        "user_input": ["Are there sports facilities?"],
+        "response": [" Sports facilities include basketball courts, football fields, and a swimming pool."]
+      },
+      {
+        "category": "Cultural Events",
+        "user_input": ["How do I participate in cultural events?"],
+        "response": [" Check the Students' Corner on the portal to register for clubs or events."]
+      },
+      {
+        "category": "Hostel",
+        "user_input": ["Where is the hostel?" ],
+        "response": ["The hostels are located within walking distance of the main campus."]
+      },
+      {
+        "category": "Hostel Rules",
+        "user_input": ["What are the hostel rules?","Is there a curfew for hostels?"],
+        "response": [" Rules and curfew timings are listed in your hostel welcome kit."]
+      },
+      {
+        "category": "Maintenance issue",
+        "user_input": [ "How can I report maintenance issues?"],
+        "response": [" For maintenance issues, submit a request on the hostel app or contact the warden."]
+      },
+      {
+        "category": "Fees ",
+        "user_input": ["How do I pay my fees?","What is the deadline for fee payment?"],
+        "response": ["Fee payments can be made through the college portal under the Finance section."]
+      },
+      {
+        "category": "Scholarship",
+        "user_input": ["Are there scholarships available?"],
+        "response": [" Scholarships are listed under the Scholarship tab; ensure you apply before the deadline."]
+      },
+      {
+        "category": "Fees Receipt",
+        "user_input": ["Can I get a fee receipt?"],
+        "response": [" Receipts are auto-generated and available for download after payment."]
+      },
+      
+      {
+        "category": "Emergency Assistance",
+        "user_input": ["I feel sick", "Who do I contact in an emergency?"],
+        "response": ["For medical assistance, visit the Health Center near Building D."," In case of an emergency, call the campus helpline at 123-456-7890."]
+      },
+      {
+        "category": "Harassment",
+        "user_input": ["How do I report harassment?"],
+        "response": ["To report harassment, reach out to the Counseling and Grievance Cell through the app or visit the office."]
+      },
+      
+      {
+        "category": "Goodbye",
+        "user_input": ["Bye", "Goodbye", "See you later", "Thanks, bye"],
+        "response": ["Goodbye! Have a great day, and feel free to reach out anytime you have questions."]
+      }
+    ]
+  }
+  
