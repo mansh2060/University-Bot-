@@ -3,7 +3,7 @@
       {
         "category": "Greetings",
         "user_input": ["Hi", "Hello", "Hey", "Good morning", "Good afternoon", "Good evening"],
-        "response": ["Hello! Welcome to [Gitam University]. I'm here to help with your queries as a first-year student. How can I assist you today?"]
+        "response": ["Hello! Welcome to Gitam University. I'm here to help with your queries as a first-year student. How can I assist you today?"]
       },
       {
         "category": "Syallabus",
@@ -31,9 +31,14 @@
         "response": ["The library is located in Building A on the second floor, open from 8 AM to 8 PM."]
         },
         {
-        "category": "Gym",
-        "user_input": [ "How can I access the gym?","Where is gym?"],
-        "response": [" The gym requires a membership, which you can get at the Student Center.","Gym is located in boys hostel C block"]
+        "category": "Gym Acess",
+        "user_input": [ "How can I access the gym?"],
+        "response": [" The gym requires a membership, which you can get at the Student Center."]
+        },
+        {
+        "category": "Gym Location",
+        "user_input": ["Where is gym?"],
+        "response": ["Gym is located in boys hostel C block"]
         },
         {
         "category": "Cafeteria",
@@ -58,7 +63,7 @@
       {
         "category": "Lab",
         "user_input": ["Is there a lab for my domain?"],
-        "response": [" Labs for practical sessions are held in Room 201."]
+        "response": ["Labs are depenedent on the subjects which you are pursuing in the semester."]
       },
       {
         "category": "Project Related Guidance",
