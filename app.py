@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 CORS(app, origins=["http://127.0.0.1:5000", "https://university-bot-8sh1.onrender.com"])
 
-API_KEY = os.getenv("API_KEY")
+API_KEY = "4c362fc58cb1f7894ea3e0c3356172a9d643cb14e77feb8fe6f70e6857cad0fa"
 
 @app.route("/")
 def index_get():
