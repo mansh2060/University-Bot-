@@ -11,39 +11,39 @@ class Chatbox {
     }
 
     display() {
-        const {openButton, chatBox, sendButton} = this.args;
+        const { openButton, chatBox, sendButton } = this.args;
 
-        openButton.addEventListener('click', () => this.toggleState(chatBox))
+        openButton.addEventListener('click', () => this.toggleState(chatBox));
 
-        sendButton.addEventListener('click', () => this.onSendButton(chatBox))
+        sendButton.addEventListener('click', () => this.onSendButton(chatBox));
 
         const node = chatBox.querySelector('input');
-        node.addEventListener("keyup", ({key}) => {
+        node.addEventListener("keyup", ({ key }) => {
             if (key === "Enter") {
-                this.onSendButton(chatBox)
+                this.onSendButton(chatBox);
             }
-        })
+        });
     }
 
     toggleState(chatbox) {
         this.state = !this.state;
 
         // show or hides the box
-        if(this.state) {
-            chatbox.classList.add('chatbox--active')
+        if (this.state) {
+            chatbox.classList.add('chatbox--active');
         } else {
-            chatbox.classList.remove('chatbox--active')
+            chatbox.classList.remove('chatbox--active');
         }
     }
 
     onSendButton(chatbox) {
         var textField = chatbox.querySelector('input');
-        let text1 = textField.value
+        let text1 = textField.value;
         if (text1 === "") {
             return;
         }
 
-        let msg1 = { name: "User", message: text1 }
+        let msg1 = { name: "User", message: text1 };
         this.messages.push(msg1);
 
         fetch('https://university-bot-8sh1.onrender.com/predict', {  // Updated URL
@@ -51,41 +51,38 @@ class Chatbox {
             body: JSON.stringify({ message: text1 }),
             mode: 'cors',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-api-key': 'YOUR_API_KEY'  // Make sure to replace this with your actual API key if needed
             },
-          })
-          .then(r => r.json())
-          .then(r => {
+        })
+        .then(r => r.json())
+        .then(r => {
             let msg2 = { name: "Assistant", message: r.answer };
             this.messages.push(msg2);
-            this.updateChatText(chatbox)
-            textField.value = ''
-
-        }).catch((error) => {
+            this.updateChatText(chatbox);
+            textField.value = '';
+        })
+        .catch((error) => {
             console.error('Error:', error);
-            this.updateChatText(chatbox)
-            textField.value = ''
-          });
+            this.updateChatText(chatbox);
+            textField.value = '';
+        });
     }
 
     updateChatText(chatbox) {
         var html = '';
-        this.messages.slice().reverse().forEach(function(item, index) {
-            if (item.name === "Assistant")
-            {
-                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>'
+        this.messages.slice().reverse().forEach(function (item, index) {
+            if (item.name === "Assistant") {
+                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>';
+            } else {
+                html += '<div class="messages__item messages__item--operator">' + item.message + '</div>';
             }
-            else
-            {
-                html += '<div class="messages__item messages__item--operator">' + item.message + '</div>'
-            }
-          });
+        });
 
         const chatmessage = chatbox.querySelector('.chatbox__messages');
         chatmessage.innerHTML = html;
     }
 }
-
 
 const chatbox = new Chatbox();
 chatbox.display();
