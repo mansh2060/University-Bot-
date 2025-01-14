@@ -58,6 +58,5 @@ if __name__ == "__main__":
         if sentence == "quit":
             break
 
-        response = get_response(sentence)
-        print(f"Assistant     :{response}")
+        
      
