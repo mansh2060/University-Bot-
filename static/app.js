@@ -28,7 +28,6 @@ class Chatbox {
     toggleState(chatbox) {
         this.state = !this.state;
 
-        // show or hides the box
         if (this.state) {
             chatbox.classList.add('chatbox--active');
         } else {
@@ -52,7 +51,7 @@ class Chatbox {
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-key': '4c362fc58cb1f7894ea3e0c3356172a9d643cb14e77feb8fe6f70e6857cad0fa'  
+                'x-api-key': API_KEY
             },
         })
         .then(r => r.json())
