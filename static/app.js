@@ -8,7 +8,9 @@ class Chatbox {
 
         this.state = false;
         this.messages = [];
-        this.API_KEY = '{{ api_key }}'; 
+        
+        // Directly using the provided API key
+        this.API_KEY = '4c362fc58cb1f7894ea3e0c3356172a9d643cb14e77feb8fe6f70e6857cad0fa';
     }
 
     display() {
@@ -43,37 +45,36 @@ class Chatbox {
             return;
         }
 
-        
         this.messages.push({ name: "User", message: userMessage });
 
-        console.log("User Message Sent:", userMessage);  
-        console.log("API Key Sent:", this.API_KEY);      
-        
+        console.log("User Message Sent:", userMessage);
+        console.log("API Key Sent:", this.API_KEY);
+
         fetch('https://university-bot-8sh1.onrender.com/predict', {
             method: 'POST',
             body: JSON.stringify({ message: userMessage }),
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-key': this.API_KEY 
+                'x-api-key': this.API_KEY  // Hardcoded API Key
             },
         })
         .then(response => {
-            console.log("Server Response Status:", response.status);  
+            console.log("Server Response Status:", response.status);
             if (!response.ok) {
                 throw new Error(`Server responded with status ${response.status}`);
             }
             return response.json();
         })
         .then(data => {
-            console.log("Server Response Data:", data);  
+            console.log("Server Response Data:", data);
             const assistantMessage = data.answer || "Sorry, I couldn't process your request.";
             this.messages.push({ name: "Assistant", message: assistantMessage });
             this.updateChatText(chatbox);
             textField.value = '';
         })
         .catch(error => {
-            console.error('Error:', error);  
+            console.error('Error:', error);
             this.messages.push({ name: "Assistant", message: "An error occurred. Please try again later." });
             this.updateChatText(chatbox);
             textField.value = '';
@@ -83,7 +84,6 @@ class Chatbox {
     updateChatText(chatbox) {
         let html = '';
 
-       
         this.messages.slice().reverse().forEach(function (item) {
             if (item.name === "Assistant") {
                 html += `<div class="messages__item messages__item--visitor">${item.message}</div>`;
@@ -93,7 +93,7 @@ class Chatbox {
         });
 
         const chatMessages = chatbox.querySelector('.chatbox__messages');
-        chatMessages.innerHTML = html; 
+        chatMessages.innerHTML = html;
     }
 }
 
