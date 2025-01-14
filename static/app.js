@@ -46,35 +46,38 @@ class Chatbox {
         
         this.messages.push({ name: "User", message: userMessage });
 
+        console.log("User Message Sent:", userMessage);  
+        console.log("API Key Sent:", this.API_KEY);      
+        
         fetch('https://university-bot-8sh1.onrender.com/predict', {
             method: 'POST',
             body: JSON.stringify({ message: userMessage }),
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-key': this.API_KEY  
+                'x-api-key': this.API_KEY 
             },
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Server responded with status ${response.status}`);
-                }
-                return response.json();  
-            })
-            .then(data => {
-                console.log(data);  
-             
-                const assistantMessage = data.answer || "Sorry, I couldn't process your request.";
-                this.messages.push({ name: "Assistant", message: assistantMessage });
-                this.updateChatText(chatbox);
-                textField.value = '';  
-            })
-            .catch(error => {
-                console.error('Error:', error); 
-                this.messages.push({ name: "Assistant", message: "An error occurred. Please try again later." });
-                this.updateChatText(chatbox);
-                textField.value = '';  
-            });
+        .then(response => {
+            console.log("Server Response Status:", response.status);  
+            if (!response.ok) {
+                throw new Error(`Server responded with status ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Server Response Data:", data);  
+            const assistantMessage = data.answer || "Sorry, I couldn't process your request.";
+            this.messages.push({ name: "Assistant", message: assistantMessage });
+            this.updateChatText(chatbox);
+            textField.value = '';
+        })
+        .catch(error => {
+            console.error('Error:', error);  
+            this.messages.push({ name: "Assistant", message: "An error occurred. Please try again later." });
+            this.updateChatText(chatbox);
+            textField.value = '';
+        });
     }
 
     updateChatText(chatbox) {
