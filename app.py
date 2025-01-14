@@ -1,37 +1,35 @@
 from flask import Flask, render_template, jsonify, request
-from chat import get_response  
+from flask_cors import CORS  
+from chat import get_response
 import os
-
 app = Flask(__name__)
 
 
+CORS(app, origins=["http://127.0.0.1:5000", "https://university-bot-8sh1.onrender.com"])
+
 API_KEY = os.getenv("API_KEY")
-
-
 
 @app.route("/")
 def index_get():
-    return render_template('index.html',api_key=API_KEY)
+    return render_template('index.html', api_key=API_KEY)
 
-@app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["POST", "OPTIONS"])
 def predict():
- 
+    if request.method == "OPTIONS":
+        return "", 200  # Handle OPTIONS request for CORS preflight
+
     user_api_key = request.headers.get("x-api-key")
     if user_api_key != API_KEY:
         return jsonify({"error": "Unauthorized access"}), 401
 
-    
     text = request.get_json().get("message")
-    
-    if text:  
-        response = get_response(text)  
+    if text:
+        response = get_response(text)
         message = {'answer': response}
     else:
         message = {'answer': "Sorry, I didn't understand that."}
-    
+
     return jsonify(message)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-    
+    app.run(host="0.0.0.0", port=5000)
