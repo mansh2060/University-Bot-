@@ -16,18 +16,22 @@ def index_get():
 @app.route("/predict", methods=["POST", "OPTIONS"])
 def predict():
     if request.method == "OPTIONS":
-        return "", 200  # Handle OPTIONS request for CORS preflight
+        return "", 200 
+    
+    try:
+        user_api_key = request.headers.get("x-api-key")
+        if user_api_key != API_KEY:
+            return jsonify({"error": "Unauthorized access"}), 401
 
-    user_api_key = request.headers.get("x-api-key")
-    if user_api_key != API_KEY:
-        return jsonify({"error": "Unauthorized access"}), 401
-
-    text = request.get_json().get("message")
-    if text:
-        response = get_response(text)
-        message = {'answer': response}
-    else:
-        message = {'answer': "Sorry, I didn't understand that."}
+        text = request.get_json().get("message")
+        if text:
+            response = get_response(text)
+            message = {'answer': response}
+        else:
+            message = {'answer': "Sorry, I didn't understand that."}
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500  
 
     return jsonify(message)
 
