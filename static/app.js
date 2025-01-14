@@ -8,7 +8,7 @@ class Chatbox {
 
         this.state = false;
         this.messages = [];
-        this.API_KEY = '{{API_KEY}}'; 
+        this.API_KEY = '{{ api_key }}'; 
     }
 
     display() {
@@ -43,43 +43,44 @@ class Chatbox {
             return;
         }
 
-       
+        
         this.messages.push({ name: "User", message: userMessage });
 
-       
         fetch('https://university-bot-8sh1.onrender.com/predict', {
             method: 'POST',
             body: JSON.stringify({ message: userMessage }),
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-key': this.API_KEY 
+                'x-api-key': this.API_KEY  
             },
         })
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Server responded with status ${response.status}`);
                 }
-                return response.json();
+                return response.json();  
             })
             .then(data => {
-                // Validate server response
+                console.log(data);  
+             
                 const assistantMessage = data.answer || "Sorry, I couldn't process your request.";
                 this.messages.push({ name: "Assistant", message: assistantMessage });
                 this.updateChatText(chatbox);
-                textField.value = '';
+                textField.value = '';  
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Error:', error); 
                 this.messages.push({ name: "Assistant", message: "An error occurred. Please try again later." });
                 this.updateChatText(chatbox);
-                textField.value = '';
+                textField.value = '';  
             });
     }
 
     updateChatText(chatbox) {
         let html = '';
 
+       
         this.messages.slice().reverse().forEach(function (item) {
             if (item.name === "Assistant") {
                 html += `<div class="messages__item messages__item--visitor">${item.message}</div>`;
@@ -89,7 +90,7 @@ class Chatbox {
         });
 
         const chatMessages = chatbox.querySelector('.chatbox__messages');
-        chatMessages.innerHTML = html;
+        chatMessages.innerHTML = html; 
     }
 }
 
