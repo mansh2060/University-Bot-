@@ -20,20 +20,29 @@ def predict():
     
     try:
         user_api_key = request.headers.get("x-api-key")
+        print("Received API Key:", user_api_key) 
+
         if user_api_key != API_KEY:
+            print("Unauthorized access due to incorrect API key.")
             return jsonify({"error": "Unauthorized access"}), 401
 
-        text = request.get_json().get("message")
+        data = request.get_json()
+        print("Received data:", data)  
+
+        text = data.get("message")
         if text:
             response = get_response(text)
+            print("Generated response:", response)  
             message = {'answer': response}
         else:
             message = {'answer': "Sorry, I didn't understand that."}
     
     except Exception as e:
+        print("Error occurred:", str(e)) 
         return jsonify({"error": str(e)}), 500  
 
     return jsonify(message)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
