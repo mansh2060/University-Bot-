@@ -46,13 +46,13 @@ class Chatbox {
         let msg1 = { name: "User", message: text1 };
         this.messages.push(msg1);
 
-        fetch('https://university-bot-8sh1.onrender.com/predict', {  // Updated URL
+        fetch('https://university-bot-8sh1.onrender.com/predict', {  
             method: 'POST',
             body: JSON.stringify({ message: text1 }),
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-key': 'YOUR_API_KEY'  // Make sure to replace this with your actual API key if needed
+                'x-api-key': '4c362fc58cb1f7894ea3e0c3356172a9d643cb14e77feb8fe6f70e6857cad0fa'  
             },
         })
         .then(r => r.json())
