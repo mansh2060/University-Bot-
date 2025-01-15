@@ -8,9 +8,6 @@ class Chatbox {
 
         this.state = false;
         this.messages = [];
-        
-        // Directly using the provided API key
-        this.API_KEY = '4c362fc58cb1f7894ea3e0c3356172a9d643cb14e77feb8fe6f70e6857cad0fa';
     }
 
     display() {
@@ -48,15 +45,13 @@ class Chatbox {
         this.messages.push({ name: "User", message: userMessage });
 
         console.log("User Message Sent:", userMessage);
-        console.log("API Key Sent:", this.API_KEY);
 
         fetch('https://university-bot-8sh1.onrender.com/predict', {
             method: 'POST',
             body: JSON.stringify({ message: userMessage }),
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': this.API_KEY  // Hardcoded API Key
+                'Content-Type': 'application/json'
             },
         })
         .then(response => {
